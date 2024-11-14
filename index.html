@@ -13,18 +13,26 @@
     </header>
 
     <button id="pauseButton" onclick="PauseGame()">||</button>
-    <div id="pauseOverlay" style="display: none;">
+    <div id="pauseOverlay" style="display: none">
       <div id="pauseText">Pause</div>
     </div>
 
     <canvas id="gameCanvas" width="800" height="400"></canvas>
-    <script src="board.js"></script>
-    <script src="pause.js"></script>
+    </div>
 
     <div id="score"></div>
-    <canvas id="gameCanvas" width="800" height="400"></canvas>
-    <script src="board.js"></script>
-    <script src="action/action.js"></script>
 
+    <div class="d-pad">
+      <div class="button" id="up">↑</div>
+      <div></div>
+      <div class="button" id="right">→</div>
+      <div class="button" id="left">←</div>
+      <div></div>
+      <div class="button" id="down">↓</div>
+    </div>
+
+    <script src="action/action.js"></script>
+    <script src="board.js"></script>
+    <script src="pause.js"></script>
   </body>
 </html>
