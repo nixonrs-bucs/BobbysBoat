@@ -1,16 +1,16 @@
 .main-header {
-  background-color: #00053E;
+  background-color: #00053e;
   color: #fff;
   text-align: center;
   padding: 20px;
-  border-bottom: 4px solid #FFC72C;
+  border-bottom: 4px solid #ffc72c;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .snek-h1 {
   font-size: 3em;
   font-weight: bold;
-  color: #FFC72C;
+  color: #ffc72c;
   text-shadow: 2px 2px #222;
   margin: 0;
 }
