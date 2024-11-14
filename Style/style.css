@@ -16,9 +16,48 @@
 }
 
 canvas {
-  border: 1px solid black;
-  padding: 0;
+  border: 0px solid black;
+  padding: 10px;
   margin: auto;
   display: block;
   width: 800px;
+}
+
+#pauseButton {
+  position: absolute;
+  top: 64.5%;
+  left: 370px;
+  bottom: 220px;
+  padding: 15px;
+  padding-top: 4px;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: 3px solid #000;
+  font-size: 24px;
+  cursor: pointer;
+  color: #000;
+}
+
+#pauseButton:hover {
+  color: #ffcc00;
+  background-color: #fff;
+}
+
+#pauseOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#pauseText {
+  color: white;
+  font-size: 3em;
+  font-weight: bold;
 }
