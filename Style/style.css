@@ -25,7 +25,7 @@ canvas {
 
 
 #pauseButton {
-  position: absolute;
+  position: fixed;
   top: 64.5%;
   left: 370px;
   bottom: 220px;
@@ -76,3 +76,38 @@ canvas {
   width: 70px;
 }
 
+/* Center the D-pad on the screen */
+.d-pad {
+  display: grid;
+  grid-template-areas: 
+    " . up . "
+    " left . right "
+    " . down . ";
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* D-pad buttons */
+.button {
+  width: 40px;
+  height: 40px;
+  background-color: lightgray;
+  border: 2px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.button:hover {
+  background-color: darkgray;
+}
+
+/* Positioning each direction in the D-pad */
+#up { grid-area: up; }
+#down { grid-area: down; }
+#left { grid-area: left; }
+#right { grid-area: right; }
