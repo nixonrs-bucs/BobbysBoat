@@ -3,7 +3,7 @@ const ctx = canvas.getContext('2d');
 
 // Load background image
 const backgroundImage = new Image();
-backgroundImage.src = '/assets/boardbackground.jpg';
+backgroundImage.src = '/assets/background.jpeg';
 
 // Draw background image
 backgroundImage.onload = 
@@ -22,3 +22,4 @@ function() {
     ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
     drawBoard();
 };
+
