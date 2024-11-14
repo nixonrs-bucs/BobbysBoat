@@ -65,7 +65,7 @@ canvas {
 
 /*Score*/
 #score {
-  font-size: x-large;
+  font-size: large;
   font-family: 'Courier New', Courier, monospace;
   height: 45px;
   text-align: right;
