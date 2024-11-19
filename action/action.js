@@ -14,3 +14,4 @@ document
 document
   .getElementById("right")
   .addEventListener("click", () => console.log("right"));
+//score.innerHTML = "Score";
