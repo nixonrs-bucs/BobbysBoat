@@ -11,13 +11,25 @@
     <header class="main-header">
       <h1 class="snek-h1">Snek Game</h1>
     </header>
-
+    <div class="scoreContainer">
+      <div id="scoreBox">
+        <u>Score: </u>
+        <div>
+          <p>Player: </p>
+        </div>
+      </div>
+    </div>
     <canvas id="gameCanvas" width="400" height="400"></canvas>
 
 
     <button id="pauseButton" onclick="PauseGame()">||</button>
     <div id="pauseOverlay" style="display: none">
       <div id="pauseText">Pause</div>
+    </div>
+
+     <button id="tutorialButton">Tutorial</button>
+    <div id="tutorialOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; flex-direction: column; z-index: 1000;">
+  
     </div>
 
     <script src="board.js"></script>
@@ -32,7 +44,7 @@
 
 
 
-    <div id="score"></div>
+   
 
     <div class="d-pad">
       <div class="button" id="up">↑</div>
@@ -46,5 +58,6 @@
     <script src="action/action.js"></script>
     <script src="board.js"></script>
     <script src="pause.js"></script>
+    <script src="tutorial.js"></script>
   </body>
 </html>

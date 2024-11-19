@@ -1,3 +1,3 @@
 const score = document.getElementById('score');
 
-score.innerHTML = "Score";
+//score.innerHTML = "Score";
