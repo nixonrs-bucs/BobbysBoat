@@ -67,6 +67,8 @@ canvas {
   float: right;
   position: relative;
   top: auto;
+  right: 370px;
+  top: 150px;
 }
 /*Score*/
 #scoreBox {
