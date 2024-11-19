@@ -26,6 +26,22 @@
     <div class="button-container">
       <button id="pauseButton" onclick="PauseGame()">Pause</button>
       <button class="tutorialButton" id="tutorialButton">Tutorial</button>
+    <button id="tutorialButton">Tutorial</button>
+    <div id="tutorialOverlay" style="display: none;">
+      <div id="tutorialContent">
+        <h2>Tutorial</h2>
+        <p>Welcome to the Snek Game!</p>
+        <ul>
+          <li>Use the arrow keys to control the snake.</li>
+          <li>Avoid running into the walls or yourself.</li>
+          <li>Eat the food to grow longer and earn points.</li>
+        </ul>
+        <button id="closeTutorialButton">Close</button>
+      </div>
+    </div>
+    <button id="pauseButton" onclick="PauseGame()">||</button>
+    <div id="pauseOverlay" style="display: none">
+      <div id="pauseText">Pause</div>
     </div>
 
     <div id="pauseOverlay" style="display: none">

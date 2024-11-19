@@ -1,38 +1,30 @@
-//Background for the tutorial instructions overlay will be updated along with positioning.
-
-document.addEventListener('DOMContentLoaded', function () {
-    const tutorialButton = document.getElementById('tutorialButton');
-    const tutorialOverlay = document.getElementById('tutorialOverlay');
-    const closeButton = document.createElement('button');
+document.addEventListener("DOMContentLoaded", () => {
+    const tutorialButton = document.getElementById("tutorialButton");
+    const gameCanvas = document.getElementById("gameCanvas");
+    const tutorialOverlay = document.getElementById("tutorialOverlay");
+    const closeTutorialButton = document.getElementById("closeTutorialButton");
   
-    // Add the close button 
-    closeButton.textContent = 'Close';
-    closeButton.style.marginTop = '20px';
-    closeButton.style.padding = '10px 20px';
-    closeButton.style.border = 'none';
-    closeButton.style.backgroundColor = '#007bff';
-    closeButton.style.color = 'white';
-    closeButton.style.borderRadius = '5px';
-    closeButton.style.cursor = 'pointer';
+    // Fixes the tutorial button to bottom left of game board
+    function positionTutorialButton() {
+      const canvasRect = gameCanvas.getBoundingClientRect();
+      tutorialButton.style.position = "absolute"; // Position relative to the viewport
+      tutorialButton.style.left = `${canvasRect.left}px`; // Align with the left edge of the canvas
+      tutorialButton.style.top = `${canvasRect.bottom + 10}px`; // Place it 10px below the canvas
+    }
   
-    //place holder instructions
-    const tutorialText = `
-      <h2>How to Play</h2>
-      <p>Use the arrow keys or the on-screen D-pad to move the snake.</p>
-      <p>Avoid hitting the walls or yourself</p>
-      <p>Collect food to grow and increase your score.</p>
-    `;
-    tutorialOverlay.innerHTML = tutorialText;
-    tutorialOverlay.appendChild(closeButton);
+    // Calls function to position and allows for window resizing
+    positionTutorialButton();
+    window.addEventListener("resize", positionTutorialButton);
   
-    // Show the tutorial overlay
-    tutorialButton.addEventListener('click', function () {
-      tutorialOverlay.style.display = 'flex';
+    // Open the tutorial modal
+    tutorialButton.addEventListener("click", () => {
+      tutorialOverlay.style.display = "flex";
     });
   
-    // Close tutorial
-    closeButton.addEventListener('click', function () {
-      tutorialOverlay.style.display = 'none';
+    // Close the tutorial modal
+    closeTutorialButton.addEventListener("click", () => {
+      tutorialOverlay.style.display = "none";
     });
+   
   });
   
