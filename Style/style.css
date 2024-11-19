@@ -63,18 +63,22 @@ canvas {
   font-weight: bold;
 }
 
+.scoreContainer {
+  float: right;
+  position: relative;
+  top: auto;
+}
 /*Score*/
-#score {
+#scoreBox {
   font-size: large;
   font-family: monospace;
   font-weight: bold;
   height: 45px;
   width: 70px;
+  margin-right: px;
   text-align: left;
   border: 2px solid #000;
   padding: 0px 10px 10px 10px;
-  float: right;
-  
 }
 
 /* Center the D-pad on the screen */
