@@ -23,7 +23,6 @@ canvas {
   width: 400px;
 }
 
-
 #pauseButton {
   position: fixed;
   top: 16%;
@@ -68,6 +67,10 @@ canvas {
   top: 150px;
 }
 /*Score*/
+
+#score {
+  font-size: x-large;
+  font-family: "Courier New", Courier, monospace;
 #scoreBox {
   font-size: large;
   font-family: monospace;
@@ -82,7 +85,7 @@ canvas {
 /* Center the D-pad on the screen */
 .d-pad {
   display: grid;
-  grid-template-areas: 
+  grid-template-areas:
     " . up . "
     " left . right "
     " . down . ";
@@ -110,7 +113,15 @@ canvas {
 }
 
 /* Positioning each direction in the D-pad */
-#up { grid-area: up; }
-#down { grid-area: down; }
-#left { grid-area: left; }
-#right { grid-area: right; }
+#up {
+  grid-area: up;
+}
+#down {
+  grid-area: down;
+}
+#left {
+  grid-area: left;
+}
+#right {
+  grid-area: right;
+}
