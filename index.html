@@ -11,7 +11,14 @@
     <header class="main-header">
       <h1 class="snek-h1">Snek Game</h1>
     </header>
-
+    <div class="scoreContainer">
+      <div id="scoreBox">
+        <u>Score: </u>
+        <div>
+          <p>Player: </p>
+        </div>
+      </div>
+    </div>
     <canvas id="gameCanvas" width="400" height="400"></canvas>
 
     <button id="tutorialButton">Tutorial</button>
@@ -38,10 +45,14 @@
 
 
     <canvas id="gameCanvas" width="800" height="400"></canvas>
+
+    <script src="board.js"></script>
+    <script src="action/action.js"></script>
     </div>
 
 
-    <div id="score"></div>
+
+   
 
     <div class="d-pad">
       <div class="button" id="up">↑</div>
