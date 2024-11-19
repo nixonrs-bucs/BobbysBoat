@@ -119,12 +119,23 @@ function drawSnake() {
     }
   });
 }
+//Draw the food for the snake
+function drawFood() {
+  const food = { x: 10, y: 10 }; // Fixed spawn location for the food
 
+  ctx.fillStyle = "red"; // Color of the food
+  ctx.fillRect(food.x * tileSize, food.y * tileSize, tileSize, tileSize);
+
+  // Add border for food
+  ctx.strokeStyle = "darkred";
+  ctx.strokeRect(food.x * tileSize, food.y * tileSize, tileSize, tileSize);
+}
 // Draw the entire canvas
 function drawCanvas() {
   drawGrass(); // Draw the grass background with alternating colors
   drawGrid(); // Draw the grid
   drawSnake(); // Draw the static snake
+  drawFood(); // Draw the food
 }
 
 // Initial rendering of the canvas
