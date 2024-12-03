@@ -4,11 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const pauseText = document.getElementById("pauseText");
 
   function PauseGame() {
-    // Show the pause overlay
-    if (
-      pauseOverlay.style.display === "none" ||
-      pauseOverlay.style.display === ""
-    ) {
+    if (pauseOverlay.style.display === "none" || pauseOverlay.style.display === "") {
+      pauseGame(); // Pause the game
       pauseOverlay.style.display = "flex";
       pauseText.textContent = "Pause";
     } else {
@@ -27,11 +24,11 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         clearInterval(interval);
         pauseOverlay.style.display = "none";
+        startGame(); // Resume the game
       }
     }, 1000);
   }
 
   pauseButton.addEventListener("click", PauseGame);
-
   pauseOverlay.addEventListener("click", StartCountdown);
 });
