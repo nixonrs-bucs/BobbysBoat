@@ -157,10 +157,10 @@ function updateSnake() {
 
 // Handle keyboard input for D-pad
 document.addEventListener("keydown", (e) => {
-  if (e.key === "ArrowUp" && direction !== "down") direction = "up";
-  if (e.key === "ArrowDown" && direction !== "up") direction = "down";
-  if (e.key === "ArrowLeft" && direction !== "right") direction = "left";
-  if (e.key === "ArrowRight" && direction !== "left") direction = "right";
+  if (e.key === "ArrowUp" && direction !== "down" || e.key === "w" && direction !== "down") direction = "up";
+  if (e.key === "ArrowDown"  && direction !== "up" || e.key === "s" && direction !== "up") direction = "down";
+  if (e.key === "ArrowLeft" && direction !== "right" || e.key === "a" && direction !== "right") direction = "left";
+  if (e.key === "ArrowRight" && direction !== "left" || e.key === "d" && direction !== "left") direction = "right";
 });
 
 // Game loop to update and render the game
