@@ -120,24 +120,48 @@ function drawSnake() {
   });
 }
 
-// Draw the food for the snake
-function drawFood() {
-  const food = { x: 10, y: 10 }; // Fixed spawn location for the food
+// Food position
+let food = { x: 10, y: 10 }; // Initial position
 
-  ctx.fillStyle = "red"; // Color of the food
-  ctx.fillRect(food.x * tileSize, food.y * tileSize, tileSize, tileSize);
+// Generate a random position for the food
+function generateFoodPosition() {
+  let newFoodPosition;
+  let isOnSnake;
 
-  // Add border for food
-  ctx.strokeStyle = "darkred";
-  ctx.strokeRect(food.x * tileSize, food.y * tileSize, tileSize, tileSize);
+  do {
+    // Generate random x and y positions within the grid
+    newFoodPosition = {
+      x: Math.floor(Math.random() * (canvas.width / tileSize)),
+      y: Math.floor(Math.random() * (canvas.height / tileSize)),
+    };
+
+    // Check if the new position is on the snake
+    isOnSnake = snake.some(
+      (segment) => segment.x === newFoodPosition.x && segment.y === newFoodPosition.y
+    );
+  } while (isOnSnake); // Repeat until the food is not on the snake
+
+  return newFoodPosition;
 }
 
-// Draw the entire canvas
-function drawCanvas() {
-  drawGrass(); // Draw the grass background with alternating colors
-  drawGrid(); // Draw the grid
-  drawSnake(); // Draw the snake
-  drawFood(); // Draw the food
+// Check if the snake's head is on the food
+let foodEaten = false; // Track whether food was eaten
+
+let score = 0;
+
+function checkFoodCollision() {
+  const head = snake[0];
+
+  if (head.x === food.x && head.y === food.y) {
+
+    score += 1;
+    document.querySelector("#scoreBox p").innerHTML = `Player: ${score}`;
+    // Generate a new food position
+    food = generateFoodPosition();
+
+    // Mark that the food was eaten
+    foodEaten = true;
+  }
 }
 
 // Update snake position based on direction
@@ -152,7 +176,37 @@ function updateSnake() {
 
   // Add new head to the snake
   snake.unshift(head);
-  snake.pop(); // Remove the tail
+
+  // Check if the snake eats the food
+  checkFoodCollision();
+
+  // Remove the tail unless food was eaten
+  if (!foodEaten) {
+    snake.pop();
+  } else {
+    foodEaten = false; // Reset food eaten flag
+  }
+}
+
+
+
+// Draw the food
+function drawFood() {
+  ctx.fillStyle = "red"; // Color of the food
+  ctx.fillRect(food.x * tileSize, food.y * tileSize, tileSize, tileSize);
+
+  // Add border for food
+  ctx.strokeStyle = "darkred";
+  ctx.strokeRect(food.x * tileSize, food.y * tileSize, tileSize, tileSize);
+}
+
+
+// Draw the entire canvas
+function drawCanvas() {
+  drawGrass(); // Draw the grass background with alternating colors
+  drawGrid(); // Draw the grid
+  drawSnake(); // Draw the snake
+  drawFood(); // Draw the food
 }
 
 // Handle keyboard input for D-pad
@@ -163,14 +217,30 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowRight" && direction !== "left" || e.key === "d" && direction !== "left") direction = "right";
 });
 
-// Game loop to update and render the game
+let isPaused = false; // Track pause state
+
 function gameLoop() {
+  if (isPaused) return; // Stop execution if the game is paused
+
   updateSnake();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawCanvas();
+
   setTimeout(gameLoop, 200); // Adjust speed (200ms per frame)
 }
 
-// Start the game loop
-drawCanvas();
-gameLoop();
+function startGame() {
+  if (!isPaused) return; // Prevent multiple calls from restarting the game loop unnecessarily
+  isPaused = false; // Resume the game
+  gameLoop(); // Start or resume the game loop
+}
+
+function pauseGame() {
+  isPaused = true; // Pause the game
+}
+
+// Initialize and start the game loop
+document.addEventListener("DOMContentLoaded", () => {
+  drawCanvas(); // Ensure the initial state is drawn
+  gameLoop(); // Start the game loop
+});

@@ -1,5 +1,4 @@
-const score = document.getElementById("score");
-//score.innerHTML = "Score";
+
 
 // Adding console logs for each direction clicked
 document.getElementById("up").addEventListener("click", () => console.log("up"));
