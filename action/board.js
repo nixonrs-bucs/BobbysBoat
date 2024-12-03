@@ -147,10 +147,15 @@ function generateFoodPosition() {
 // Check if the snake's head is on the food
 let foodEaten = false; // Track whether food was eaten
 
+let score = 0;
+
 function checkFoodCollision() {
   const head = snake[0];
 
   if (head.x === food.x && head.y === food.y) {
+
+    score += 1;
+    document.querySelector("#scoreBox p").innerHTML = `Player: ${score}`;
     // Generate a new food position
     food = generateFoodPosition();
 
@@ -212,14 +217,30 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowRight" && direction !== "left") direction = "right";
 });
 
-// Game loop to update and render the game
+let isPaused = false; // Track pause state
+
 function gameLoop() {
+  if (isPaused) return; // Stop execution if the game is paused
+
   updateSnake();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawCanvas();
+
   setTimeout(gameLoop, 200); // Adjust speed (200ms per frame)
 }
 
-// Start the game loop
-drawCanvas();
-gameLoop();
+function startGame() {
+  if (!isPaused) return; // Prevent multiple calls from restarting the game loop unnecessarily
+  isPaused = false; // Resume the game
+  gameLoop(); // Start or resume the game loop
+}
+
+function pauseGame() {
+  isPaused = true; // Pause the game
+}
+
+// Initialize and start the game loop
+document.addEventListener("DOMContentLoaded", () => {
+  drawCanvas(); // Ensure the initial state is drawn
+  gameLoop(); // Start the game loop
+});
