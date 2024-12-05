@@ -180,25 +180,27 @@ function gameOver() {
   document.getElementById("finalScore").textContent = score;
 }
 
-// Restart button event listener
-document.getElementById("restartButton").addEventListener("click", () => {
-  // Reset game state
-  snake = [{ head: 5, y: 5 }, // Head of the snake
-           { middle: 4, y: 5 }, // Middle part
-           { tail: 3, y: 5 }]; // Tail part;
-  direction = "right";
-  score = 0;
- drawCanvas();
+  // Restart button event listener
+  document.getElementById("restartButton").addEventListener("click", () => {
+    // Reset game state
+    snake = [{ head: 5, y: 5 }, // Head of the snake
+            { middle: 4, y: 5 }, // Middle part
+            { tail: 3, y: 5 }]; // Tail part;
+    //direction = "right";
+    score = 0;
+    drawCanvas();
 
-  // Hide the game over screen and resume the game
-  document.getElementById("gameOverScreen").style.display = "none";
-  gameLoop();
+    // Hide the game over screen and resume the game
+    document.getElementById("gameOverScreen").style.display = "none";
+    gameLoop();
 });
 
+drawCanvas();
+gameLoop();
 // Start the game loop
-if (snake.head < 0 || snake.head >= canvas.width / tileSize || snake.y < 0 || snake.y >= canvas.height / tileSize) {
+/*if (snake.head > 0 || snake.head >= canvas.width / tileSize || snake.y < 0 || snake.y >= canvas.height / tileSize) {
   gameOver();
 } else {
   drawCanvas();
   gameLoop();
-}
+}*/
