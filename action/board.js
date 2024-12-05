@@ -12,9 +12,9 @@ const greenShades = [
 
 // Snake starting position
 let snake = [
-  { head: 5, y: 5 }, // Head of the snake
-  { middle: 4, y: 5 }, // Middle part
-  { tail: 3, y: 5 }, // Tail part
+  { x: 5, y: 5 }, // Head of the snake
+  { x: 4, y: 5 }, // Middle part
+  { x: 3, y: 5 }, // Tail part
 ];
 
 // Snake direction (default is right)
@@ -183,9 +183,9 @@ function gameOver() {
   // Restart button event listener
   document.getElementById("restartButton").addEventListener("click", () => {
     // Reset game state
-    snake = [{ head: 5, y: 5 }, // Head of the snake
-            { middle: 4, y: 5 }, // Middle part
-            { tail: 3, y: 5 }]; // Tail part;
+    snake = [{ x: 5, y: 5 }, // Head of the snake
+             { x: 4, y: 5 }, // Middle part
+             { x: 3, y: 5 }]; // Tail part;
     //direction = "right";
     score = 0;
     drawCanvas();
@@ -198,9 +198,9 @@ function gameOver() {
 drawCanvas();
 gameLoop();
 // Start the game loop
-/*if (snake.head > 0 || snake.head >= canvas.width / tileSize || snake.y < 0 || snake.y >= canvas.height / tileSize) {
-  gameOver();
-} else {
+if (snake.x < 0 || snake.x >= canvas.width / tileSize || snake.y < 0 || snake.y >= canvas.height / tileSize) {
   drawCanvas();
   gameLoop();
-}*/
+} else {
+  gameOver();
+}
